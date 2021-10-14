@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./peso.css";
+import "../header/header.css";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Button } from "primereact/button";

@@ -7,6 +7,7 @@ import 'primeflex/primeflex.css';
 import {Route, Switch, HashRouter} from 'react-router-dom';
 import Grid from 'components/grid/grid';
 import Peso from 'components/peso/peso';
+import Pezzi from 'components/pezzi/pezzi';
 
 
 function App() {
@@ -20,17 +21,17 @@ function App() {
           </Route>
 
           <Route exact path="/peso">
-            <Header environment="peso"/>
+            <Header environment="calc"/>
             <Peso />
           </Route>
 
           <Route exact path="/pezzi">
-            <Header environment="pezzi"/>
-            {/* <Pezzi /> */}
+            <Header environment="calc"/>
+            <Pezzi />
           </Route>
 
           <Route exact path="/pezzatura">
-            <Header environment="pezzatura"/>
+            <Header environment="calc"/>
             {/* <Pezzatura /> */}
           </Route>
         </Switch>
