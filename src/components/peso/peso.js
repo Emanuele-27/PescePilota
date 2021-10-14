@@ -103,7 +103,7 @@ function sottrai(object, value) {
 
 function call(param) {
   let requestOptions = {
-    method: "POST",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(param),
   };
