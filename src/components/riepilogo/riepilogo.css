@@ -1,0 +1,29 @@
+.singleColumnStyle{
+  width: 20%;
+  margin-right: 0.2rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.doubleColumnStyle{
+  width: 30%;
+  margin-left: 0.2rem;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: #86b300;
+  color: white;
+}
+
+.p-row-odd{
+  background:  #dfff80 !important;
+  color: black !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  background:#ecffb3;
+  color: black;
+}

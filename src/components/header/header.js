@@ -34,12 +34,31 @@ class Header extends Component {
             className="p-button-danger stamp red"
             onClick={this.confirm}
           />
-          <Button
-            label="Stampa"
-            icon="pi pi-print"
-            iconPos="left"
-            className="p-button-info stamp blue"
-          />
+          <Link
+            to={{
+              pathname: "/riepilogo",
+            }}
+          >
+            <Button
+              label="Vai al Riepilogo"
+              icon="pi pi-file-excel"
+              iconPos="left"
+              className="p-button-info stamp blue"
+            />
+          </Link>
+        </div>
+      );
+    } else if (this.props.environment === "calc") {
+      return (
+        <div className="header">
+          <Link to="/">
+            <Button
+              label="Indietro"
+              icon="pi pi-arrow-left"
+              iconPos="left"
+              className="p-button-info stamp blue"
+            />
+          </Link>
         </div>
       );
     } else {
@@ -53,6 +72,12 @@ class Header extends Component {
               className="p-button-info stamp blue"
             />
           </Link>
+          <Button
+            label="Stampa"
+            icon="pi pi-print"
+            iconPos="left"
+            className="p-button-info stamp blue"
+          />
         </div>
       );
     }

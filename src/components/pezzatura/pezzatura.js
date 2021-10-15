@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "./peso.css";
+import "./pezzatura.css";
+import "../peso/peso.css";
 import "../header/header.css";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 
-function Peso() {
+function Pezzatura() {
   let obj = useLocation().query;
 
   const [selectedValue, setSelectedValue] = useState(0);
@@ -88,6 +89,7 @@ function Peso() {
       </Card.Body>
     </Card>
   );
+
 }
 
 function aggiungi(object, value) {
@@ -113,5 +115,4 @@ function call(param) {
     console.log(response.status)
   );
 }
-
-export default Peso;
+export default Pezzatura;

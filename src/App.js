@@ -8,7 +8,8 @@ import {Route, Switch, HashRouter} from 'react-router-dom';
 import Grid from 'components/grid/grid';
 import Peso from 'components/peso/peso';
 import Pezzi from 'components/pezzi/pezzi';
-
+import Riepilogo from 'components/riepilogo/riepilogo';
+import Pezzatura from 'components/pezzatura/pezzatura';
 
 function App() {
   return (
@@ -32,7 +33,12 @@ function App() {
 
           <Route exact path="/pezzatura">
             <Header environment="calc"/>
-            {/* <Pezzatura /> */}
+            <Pezzatura />
+          </Route>
+
+          <Route exact path="/riepilogo">
+            <Header environment="riepilogo"/>
+            <Riepilogo />
           </Route>
         </Switch>
         </HashRouter>

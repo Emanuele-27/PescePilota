@@ -12,10 +12,12 @@ function Pezzi() {
 
   const [selectedValue, setSelectedValue] = useState(0);
 
+  let nome = obj.nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
+
   return (
     <Card className="cardPeso">
       <Card.Body>
-        <Card.Text className="title">{obj.nome} </Card.Text>
+        <Card.Text className="title">{nome} </Card.Text>
         <Card.Text className="currence">
           Pezzi Totali : {obj.pezzi} pz.
         </Card.Text>
