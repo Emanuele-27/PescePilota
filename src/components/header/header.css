@@ -26,6 +26,12 @@
     border-color:  #990000 !important;
 }
 
+.redColor{
+    color: #990000 !important;
+    background:  transparent !important;
+    border-color: transparent !important;
+}
+
 .green{
     background:   #006600 !important;
     border-color:  #006600 !important;

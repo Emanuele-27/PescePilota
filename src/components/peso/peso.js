@@ -38,7 +38,6 @@ function Peso() {
     {
       label: "5,000+",
       items: [
-        { label: "5,000", value: 5.0 },
         { label: "6,000", value: 6.0 },
         { label: "7,000", value: 7.0 },
         { label: "8,000", value: 8.0 },
