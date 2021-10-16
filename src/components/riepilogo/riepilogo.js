@@ -23,6 +23,7 @@ class Riepilogo extends Component {
         let pesoPezziList = [];
         let pezzaturaList = [];
         for (let i in obj.pesci) {
+          obj.pesci[i].nome = obj.pesci[i].nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
           if (obj.pesci[i].peso > 0)
             obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3) + " kg";
           else obj.pesci[i].peso = obj.pesci[i].peso + " kg";
@@ -54,25 +55,13 @@ class Riepilogo extends Component {
   }
 
   render() {
+    const headerPeso = <div className="table-header">Quantità</div>;
 
-    const headerPeso = (
-      <div className="table-header">
-          Quantità
-      </div>
-  );
+    const headerPesoPezzi = (
+      <div className="table-header">Quantità e Pezzi</div>
+    );
 
-  const headerPesoPezzi = (
-    <div className="table-header">
-        Quantità e Pezzi
-    </div>
-);
-
-const headerPezzature = (
-  <div className="table-header">
-      Pezzature
-  </div>
-);
-
+    const headerPezzature = <div className="table-header">Pezzature</div>;
 
     return (
       <div id="printSelector">
