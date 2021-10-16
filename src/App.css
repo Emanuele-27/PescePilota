@@ -23,7 +23,7 @@
     page-break-after: always;
   }
   .doubleRiepStyle {
-    width: 100% !important;
+    width: 98% !important;
     margin-bottom: 0.5cm;
     page-break-after: always;
   }
@@ -32,7 +32,6 @@
   }
   .p-datatable .p-datatable-tbody > tr > td {
     border-width: 2px !important;
-    /* border: 1 !important; */
     border-color: black;
   }
 }
@@ -40,7 +39,7 @@
 @page {
   size: 210mm 297mm;
   margin-top: 0.2cm;
-  margin-left: 1cm;
-  margin-right: 1cm;
+  margin-left: 0.5cm;
+  margin-right: 0.5cm;
   display: block;
 }
