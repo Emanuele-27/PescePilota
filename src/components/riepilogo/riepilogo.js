@@ -100,6 +100,7 @@ class Riepilogo extends Component {
             sortOrder={1}
             className="doubleRiepStyle"
             header={headerPezzature}
+            emptyMessage="Nessun elemento presente"
           >
             <Column field="nome" header="Nome"></Column>
             <Column field="n" header="N. Pezzi"></Column>
