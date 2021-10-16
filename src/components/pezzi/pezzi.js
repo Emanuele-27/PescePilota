@@ -80,7 +80,7 @@ function call(param) {
     body: JSON.stringify(param),
   };
 
-  fetch("http://localhost:3001/write", requestOptions).then((response) =>
+  fetch("http://192.168.1.101:3001/write", requestOptions).then((response) =>
     console.log(response.status)
   );
 }

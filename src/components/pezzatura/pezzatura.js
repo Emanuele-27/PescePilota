@@ -295,7 +295,9 @@ function Pezzatura() {
 
 function setPesoString(list) {
   for (let i in list) {
-    list[i].peso = parseFloat(list[i].peso).toFixed(3);
+    list[i].peso = (parseFloat(list[i].peso).toFixed(3));
+    console.log(list[i].peso);
+    console.log(list[i].peso.replace('.', ','));
   }
 }
 
@@ -333,7 +335,7 @@ function call(param) {
     body: JSON.stringify(param),
   };
 
-  fetch("http://localhost:3001/write", requestOptions).then((response) =>
+  fetch("http://192.168.1.101:3001/write", requestOptions).then((response) =>
     console.log(response.status)
   );
 }

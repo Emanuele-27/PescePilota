@@ -11,7 +11,7 @@ class Grid extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3001/read")
+    fetch("http://192.168.1.101:3001/read")
       .then((response) => response.json())
       .then((json) => JSON.stringify(json))
       .then((obj) => this.setState(JSON.parse(obj)));

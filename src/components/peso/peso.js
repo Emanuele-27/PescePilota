@@ -49,13 +49,15 @@ function Peso() {
 
   let nome = obj.nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 
+  let peso = obj.peso.toFixed(3).replace('.', ',');
+
   return (
     <div className="center">
     <Card className="cardPeso">
       <Card.Body>
         <Card.Text className="title">{nome} </Card.Text>
         <Card.Text className="currence">
-          Peso Attuale : {obj.peso.toFixed(3)} kg
+          Peso Attuale : {peso} kg
         </Card.Text>
 
         <Dropdown
@@ -111,7 +113,7 @@ function call(param) {
     body: JSON.stringify(param),
   };
 
-  fetch("http://localhost:3001/write", requestOptions).then((response) =>
+  fetch("http://192.168.1.101:3001/write", requestOptions).then((response) =>
     console.log(response.status)
   );
 }

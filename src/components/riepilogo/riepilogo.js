@@ -14,7 +14,7 @@ class Riepilogo extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3001/read")
+    fetch("http://192.168.1.101:3001/read")
       .then((response) => response.json())
       .then((json) => JSON.stringify(json))
       .then((jsonObj) => {
@@ -25,7 +25,7 @@ class Riepilogo extends Component {
         for (let i in obj.pesci) {
           obj.pesci[i].nome = obj.pesci[i].nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
           if (obj.pesci[i].peso > 0)
-            obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3) + " kg";
+            obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3).replace('.', ',') + " kg";
           else obj.pesci[i].peso = obj.pesci[i].peso + " kg";
 
           if (obj.pesci[i].isPezzi) {
@@ -39,7 +39,7 @@ class Riepilogo extends Component {
               let object = {
                 nome: obj.pesci[i].nome,
                 n: obj.pesci[i].pezzature[j].n,
-                peso: obj.pesci[i].pezzature[j].peso.toFixed(3) + " kg",
+                peso: obj.pesci[i].pezzature[j].peso.toFixed(3).replace('.', ',') + " kg",
               };
               pezzaturaList.push(object);
             }
