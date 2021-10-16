@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.1.1",
     "browserify-fs": "^1.0.0",
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.13",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primereact": "^6.6.0",
@@ -21,7 +23,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"cd ../pescePilotaService && nodemon server/index.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
