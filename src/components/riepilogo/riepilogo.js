@@ -73,6 +73,7 @@ class Riepilogo extends Component {
             value={this.state.pesciPeso}
             className="singleRiepStyle"
             header={headerPeso}
+            emptyMessage="Nessun elemento presente"
           >
             <Column field="nome" header="Nome"></Column>
             <Column field="peso" header="Quantità"></Column>
@@ -85,6 +86,7 @@ class Riepilogo extends Component {
             value={this.state.pesciPesoPezzi}
             className="doubleRiepStyle centerTable"
             header={headerPesoPezzi}
+            emptyMessage="Nessun elemento presente"
           >
             <Column field="nome" header="Nome"></Column>
             <Column field="peso" header="Quantità"></Column>
