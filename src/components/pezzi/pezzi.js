@@ -15,6 +15,7 @@ function Pezzi() {
   let nome = obj.nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 
   return (
+    <div className="center">
     <Card className="cardPeso">
       <Card.Body>
         <Card.Text className="title">{nome} </Card.Text>
@@ -58,6 +59,7 @@ function Pezzi() {
         ></Button>
       </Card.Body>
     </Card>
+    </div>
   );
 }
 

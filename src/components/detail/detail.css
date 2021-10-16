@@ -1,11 +1,13 @@
 .pezzaturaB{
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 }
 .cardBody {
   background-color: #99cc00;
   border-radius: 0.5rem;
   width: 80%;
-  height: 10rem;
+  height: 11rem;
+  display: flex;
+  justify-content: center;
 }
 
 .fishName {
@@ -14,3 +16,8 @@
   font-weight: bold;
   margin-bottom: 1.2rem;
 }
+
+.marginBottom{
+  margin-bottom: 2.5rem;
+}
+

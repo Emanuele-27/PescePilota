@@ -26,6 +26,24 @@ class Detail extends Component {
         <Button label="Peso" className="p-button-danger red" />
       </Link>
     );
+    let pesoMarginBottom = (
+      <Link
+        to={{
+          pathname: "/peso",
+          query: {
+            nome: this.props.nome,
+            isPeso: this.props.isPeso,
+            peso: this.props.peso,
+            isPezzi: this.props.isPezzi,
+            pezzi: this.props.pezzi,
+            isPezzatura: this.props.isPezzatura,
+            pezzature: this.props.pezzature,
+          },
+        }}
+      >
+        <Button label="Peso" className="p-button-danger red marginBottom" />
+      </Link>
+    );
     let pezzi = (
       <Link
         to={{
@@ -61,7 +79,7 @@ class Detail extends Component {
       >
         <Button
           label="Pezzatura"
-          className="p-button-success pezzaturaB green"
+          className="p-button-success pezzaturaB green" 
         />
       </Link>
     );
@@ -85,7 +103,7 @@ class Detail extends Component {
         if (this.props.isPezzatura) {
           return (
             <div>
-              {peso} {pezzatura}{" "}
+              {pesoMarginBottom} {pezzatura}{" "}
             </div>
           );
         } else {

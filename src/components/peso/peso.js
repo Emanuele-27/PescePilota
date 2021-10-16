@@ -50,6 +50,7 @@ function Peso() {
   let nome = obj.nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 
   return (
+    <div className="center">
     <Card className="cardPeso">
       <Card.Body>
         <Card.Text className="title">{nome} </Card.Text>
@@ -87,6 +88,7 @@ function Peso() {
         ></Button>
       </Card.Body>
     </Card>
+    </div>
   );
 }
 

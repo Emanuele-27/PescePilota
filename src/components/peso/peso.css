@@ -1,13 +1,15 @@
 .cardPeso {
   width: 90%;
-  margin-left: 4.5rem;
   background-color: #99cc00;
   border-radius: 0.5rem;
-  /* height: 10rem; */
+}
+
+.center{
+  display: flex;
+  justify-content: center;
 }
 
 .title {
-  padding-top: 1rem;
   font-size: xx-large;
   font-weight: bolder;
 }
