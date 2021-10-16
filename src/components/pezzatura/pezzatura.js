@@ -13,6 +13,8 @@ import { InputNumber } from "primereact/inputnumber";
 function Pezzatura() {
   let obj = useLocation().query;
 
+  const [stato, setStato] = useState(0);
+
   const [n, setN] = useState(0);
 
   const [p, setP] = useState(0);
@@ -199,12 +201,18 @@ function Pezzatura() {
 
   let nome = obj.nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 
-  let trashButton = () => {
-      return (
-          <Button type="button" icon="pi pi-trash" className="p-button-danger"></Button>
-      );
-  }
+  setPesoString(obj.pezzature);
 
+  let trashButton = (rowData) => {
+    return (
+      <Button
+        type="button"
+        icon="pi pi-trash"
+        onClick={() => deleteSingle(rowData)}
+        className="p-button-danger"
+      ></Button>
+    );
+  };
 
   return (
     <div className="center">
@@ -269,12 +277,39 @@ function Pezzatura() {
       </Card>
     </div>
   );
+
+  function deleteSingle(row) {
+    for (let i in obj.pezzature) {
+      if (row.peso === obj.pezzature[i].peso && row.n === obj.pezzature[i].n) {
+        obj.pezzature.splice(i, 1);
+      }
+    }
+
+    setPesoNumber(obj.pezzature);
+
+    call(obj);
+
+    setStato(stato + 1);
+  }
+}
+
+function setPesoString(list) {
+  for (let i in list) {
+    list[i].peso = parseFloat(list[i].peso).toFixed(3);
+  }
+}
+
+function setPesoNumber(list) {
+  for (let i in list) {
+    list[i].peso = parseFloat(list[i].peso);
+  }
 }
 
 function aggiungi(object, num, p) {
+  setPesoNumber(object.pezzature);
   let flag = Boolean(false);
   for (let i in object.pezzature) {
-    if (object.pezzature[i].peso === p.code) {
+    if (parseFloat(object.pezzature[i].peso) === p.code) {
       object.pezzature[i].n += num;
       flag = true;
     }

@@ -1,38 +1,38 @@
 .header {
-    width: 95%;
-    background-color:#99cc00;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    height: 4rem;
-    border-radius: 0.5rem;
+  width: 95%;
+  background-color: #99cc00;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 4rem;
+  border-radius: 0.5rem;
 }
 
-.stamp{
-    margin-top: 0.7rem !important;
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
-    border-radius: 0.3rem !important;
+.stamp {
+  margin-top: 0.7rem !important;
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+  border-radius: 0.3rem !important;
 }
 
-.blue{
-    background:   #001a66 !important;
-    border-color:  #001a66 !important;
+.blue {
+  background: #001a66 !important;
+  border-color: #001a66 !important;
 }
 
-.red{
-    background:   #990000 !important;
-    border-color:  #990000 !important;
+.red {
+  background: #990000 !important;
+  border-color: #990000 !important;
 }
 
-.redColor{
-    color: #990000 !important;
-    background:  transparent !important;
-    border-color: transparent !important;
+.redColor {
+  color: #990000 !important;
+  background: transparent !important;
+  border-color: transparent !important;
 }
 
-.green{
-    background:   #006600 !important;
-    border-color:  #006600 !important;
+.green {
+  background: #006600 !important;
+  border-color: #006600 !important;
 }

@@ -9,6 +9,7 @@ class Header extends Component {
     super(props);
     this.confirm = this.confirm.bind(this);
     this.delete = this.delete.bind(this);
+    this.print = this.print.bind(this);
   }
 
   confirm(event) {
@@ -77,10 +78,23 @@ class Header extends Component {
             icon="pi pi-print"
             iconPos="left"
             className="p-button-info stamp blue"
+            onClick={() => this.print()}
           />
         </div>
       );
     }
+  }
+
+  print() {
+    let printContents = document.getElementById("printSelector").innerHTML;
+    let originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+
   }
 
   delete(param) {

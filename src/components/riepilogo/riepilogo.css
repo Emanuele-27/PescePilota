@@ -1,16 +1,19 @@
-.singleColumnStyle{
+.singleRiepStyle{
   width: 20%;
-  margin-right: 0.2rem;
 }
 
-.center {
-  display: flex;
+.centerRiep {
+  display: flex; 
   justify-content: center;
 }
 
-.doubleColumnStyle{
+.centerTable {
+  margin-right: 0.4rem; 
+  margin-left: 0.4rem;
+}
+
+.doubleRiepStyle{
   width: 30%;
-  margin-left: 0.2rem;
 }
 
 .p-datatable .p-datatable-thead > tr > th {
@@ -26,4 +29,16 @@
 .p-datatable .p-datatable-tbody > tr {
   background:#ecffb3;
   color: black;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  border-color: black;
+}
+
+.p-datatable-header{
+  background: #86b300 !important;
+  color:white !important;
+  font-size: x-large;
+  font-weight: bolder;
+  border-top: #86b300 !important;
 }
