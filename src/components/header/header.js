@@ -102,7 +102,7 @@ class Header extends Component {
       method: "DELETE",
     };
 
-    fetch("http://192.168.1.101:3001/delete", requestOptions).then((response) => {
+    fetch(process.env.REACT_APP_SERVICE_HOST+"delete", requestOptions).then((response) => {
       if (response.status === 200) window.location.reload();
     });
   }

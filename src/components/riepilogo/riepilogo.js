@@ -14,7 +14,7 @@ class Riepilogo extends Component {
   }
 
   componentDidMount() {
-    fetch("http://192.168.1.101:3001/read")
+    fetch(process.env.REACT_APP_SERVICE_HOST+"read")
       .then((response) => response.json())
       .then((json) => JSON.stringify(json))
       .then((jsonObj) => {
