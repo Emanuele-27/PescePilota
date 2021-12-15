@@ -1,5 +1,4 @@
 import "./App.css";
-import Header from 'components/header/header';
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
