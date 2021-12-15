@@ -1,0 +1,33 @@
+.selectDay .p-button{
+  width: 20rem;
+  height: 20rem;
+  font-size: xx-large;
+  color:white;
+  background-color:#8c8c8c;
+}
+
+.selectDay{
+  margin-top: 5rem;
+}
+
+.p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover{
+  background-color:#737373;
+  color: white;
+}
+
+
+.selectDay .p-button:focus-within, .selectDay .p-button:active, .selectDay .p-button:focus{
+  background-color:#001a66 !important;
+}
+
+.day{
+  margin-top: 4rem;
+  font-size: xx-large;
+}
+
+.num{
+  display: inline;
+  margin-left: 2rem;
+  font-size: 3rem;
+}
+

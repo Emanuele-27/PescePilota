@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./riepilogo.css";
 import { DataTable } from "primereact/datatable";
+import {withRouter} from 'react-router-dom';
 import { Column } from "primereact/column";
+import Header from 'components/header/header';
 
 class Riepilogo extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class Riepilogo extends Component {
   }
 
   componentDidMount() {
-    fetch(process.env.REACT_APP_SERVICE_HOST+"read")
+    fetch(process.env.REACT_APP_SERVICE_HOST+"read"+this.props.match.params.day)
       .then((response) => response.json())
       .then((json) => JSON.stringify(json))
       .then((jsonObj) => {
@@ -64,7 +66,11 @@ class Riepilogo extends Component {
     const headerPezzature = <div className="table-header">Pezzature</div>;
 
     return (
-      <div id="printSelector">
+
+      <div>
+     <Header environment="riepilogo" day={this.props.match.params.day}/>
+     <div id="printSelector">
+     <div className="dayR">{this.props.match.params.day}</div>
         <div id="toPrint" className="centerRiep">
           <DataTable
             sortMode="single"
@@ -110,8 +116,9 @@ class Riepilogo extends Component {
           </DataTable>
         </div>
       </div>
+      </div>
     );
   }
 }
 
-export default Riepilogo;
+export default withRouter(Riepilogo);

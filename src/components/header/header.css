@@ -36,3 +36,9 @@
   background: #006600 !important;
   border-color: #006600 !important;
 }
+
+.dayH{
+  display: inline;
+  font-size: xx-large;
+  margin-right: 2rem;
+}

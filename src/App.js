@@ -6,6 +6,7 @@ import "primeicons/primeicons.css";
 import 'primeflex/primeflex.css';
 import {Route, Switch, HashRouter} from 'react-router-dom';
 import Grid from 'components/grid/grid';
+import Home from 'components/home/home';
 import Peso from 'components/peso/peso';
 import Pezzi from 'components/pezzi/pezzi';
 import Riepilogo from 'components/riepilogo/riepilogo';
@@ -17,27 +18,26 @@ function App() {
       <HashRouter>
         <Switch>
           <Route exact path="/">
-            <Header environment="grid"/>
+            <Home />
+          </Route>
+
+          <Route path="/grid/:day">
             <Grid />
           </Route>
 
-          <Route exact path="/peso">
-            <Header environment="calc"/>
+          <Route path="/peso">
             <Peso />
           </Route>
 
-          <Route exact path="/pezzi">
-            <Header environment="calc"/>
+          <Route path="/pezzi">
             <Pezzi />
           </Route>
 
-          <Route exact path="/pezzatura">
-            <Header environment="calc"/>
+          <Route path="/pezzatura">
             <Pezzatura />
           </Route>
 
-          <Route exact path="/riepilogo">
-            <Header environment="riepilogo"/>
+          <Route path="/riepilogo/:day">
             <Riepilogo />
           </Route>
         </Switch>

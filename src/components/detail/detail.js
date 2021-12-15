@@ -21,6 +21,7 @@ class Detail extends Component {
             isPezzatura: this.props.isPezzatura,
             pezzature: this.props.pezzature,
           },
+          day: { day :this.props.day}
         }}
       >
         <Button label="Peso" className="p-button-danger red" />
@@ -39,6 +40,7 @@ class Detail extends Component {
             isPezzatura: this.props.isPezzatura,
             pezzature: this.props.pezzature,
           },
+          day: { day :this.props.day}
         }}
       >
         <Button label="Peso" className="p-button-danger red marginBottom" />
@@ -57,6 +59,7 @@ class Detail extends Component {
             isPezzatura: this.props.isPezzatura,
             pezzature: this.props.pezzature,
           },
+          day: { day :this.props.day}
         }}
       >
         <Button label="Pezzi" className="p-button-info blue" />
@@ -75,6 +78,7 @@ class Detail extends Component {
             isPezzatura: this.props.isPezzatura,
             pezzature: this.props.pezzature,
           },
+          day: { day :this.props.day}
         }}
       >
         <Button

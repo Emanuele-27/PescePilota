@@ -28,6 +28,19 @@ class Header extends Component {
     if (this.props.environment === "grid") {
       return (
         <div className="header">
+          <div className="dayH">
+            Giorno: {this.props.day}
+          </div>
+           <Link  to={{
+              pathname: "/"
+            }}>
+            <Button
+              label="Indietro"
+              icon="pi pi-arrow-left"
+              iconPos="left"
+              className="p-button-info stamp blue"
+            />
+          </Link>
           <Button
             label="Elimina dati"
             icon="pi pi-times"
@@ -37,7 +50,7 @@ class Header extends Component {
           />
           <Link
             to={{
-              pathname: "/riepilogo",
+              pathname: "/riepilogo/"+this.props.day
             }}
           >
             <Button
@@ -51,8 +64,14 @@ class Header extends Component {
       );
     } else if (this.props.environment === "calc") {
       return (
+        
         <div className="header">
-          <Link to="/">
+           <div className="dayH">
+            Giorno: {this.props.day}
+          </div>
+          <Link  to={{
+              pathname: "/grid/"+this.props.day
+            }}>
             <Button
               label="Indietro"
               icon="pi pi-arrow-left"
@@ -62,10 +81,32 @@ class Header extends Component {
           </Link>
         </div>
       );
+    } else if(this.props.environment === "home"){
+      return (
+        <div className="header">
+          <Link
+            to={{
+              pathname: "/grid/"+this.props.day
+            }}
+          >
+            <Button
+              label="Avanti"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              className="p-button-info stamp blue"
+            />
+          </Link>
+        </div>
+      );
     } else {
       return (
         <div className="header">
-          <Link to="/">
+           <div className="dayH">
+            Giorno: {this.props.day}
+          </div>
+          <Link to={{
+              pathname: "/grid/"+this.props.day
+            }}>
             <Button
               label="Indietro"
               icon="pi pi-arrow-left"
@@ -102,7 +143,7 @@ class Header extends Component {
       method: "DELETE",
     };
 
-    fetch(process.env.REACT_APP_SERVICE_HOST+"delete", requestOptions).then((response) => {
+    fetch(process.env.REACT_APP_SERVICE_HOST+"delete"+this.props.day, requestOptions).then((response) => {
       if (response.status === 200) window.location.reload();
     });
   }

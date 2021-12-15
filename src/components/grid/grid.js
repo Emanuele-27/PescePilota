@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./grid.css";
 import Detail from "components/detail/detail";
+import {withRouter} from 'react-router-dom';
+import Header from 'components/header/header';
 
 class Grid extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class Grid extends Component {
   }
 
   componentDidMount() {
-    fetch(process.env.REACT_APP_SERVICE_HOST+"read")
+    fetch(process.env.REACT_APP_SERVICE_HOST+"read"+this.props.match.params.day)
       .then((response) => response.json())
       .then((json) => JSON.stringify(json))
       .then((obj) => this.setState(JSON.parse(obj)));
@@ -19,10 +21,13 @@ class Grid extends Component {
 
   render() {
     return (
+      <div>
+      <Header environment="grid" day={this.props.match.params.day}/>
       <div className="p-grid">
         {this.state.pesci.map((element, i) => (
           <div key={i} className="p-col-3">
             <Detail
+              day={this.props.match.params.day}
               nome={element.nome}
               isPeso={element.isPeso}
               peso={element.peso}
@@ -34,7 +39,9 @@ class Grid extends Component {
           </div>
         ))}
       </div>
+      </div>
+
     );
   }
 }
-export default Grid;
+export default withRouter(Grid);

@@ -4,11 +4,15 @@ import "../header/header.css";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Button } from "primereact/button";
+import {withRouter} from 'react-router-dom';
 import { Dropdown } from "primereact/dropdown";
+import Header from 'components/header/header';
+
 
 function Peso() {
   let obj = useLocation().query;
 
+  let day = useLocation().day.day;
   const [selectedValue, setSelectedValue] = useState(0);
 
   const groupedValues = [
@@ -52,6 +56,8 @@ function Peso() {
   let peso = obj.peso.toFixed(3).replace('.', ',');
 
   return (
+    <div>
+     <Header environment="calc" day={day}/>
     <div className="center">
     <Card className="cardPeso">
       <Card.Body>
@@ -73,7 +79,7 @@ function Peso() {
         <Button
           label="Aggiungi"
           onClick={() => {
-            aggiungi(obj, selectedValue);
+            aggiungi(obj, selectedValue, day);
             setSelectedValue(0);
           }}
           className="p-button-danger red pesoB"
@@ -82,7 +88,7 @@ function Peso() {
         <Button
           label="Sottrai"
           onClick={() => {
-            sottrai(obj, selectedValue);
+            sottrai(obj, selectedValue, day);
             setSelectedValue(0);
           }}
           className="p-button-danger red pesoB"
@@ -91,31 +97,32 @@ function Peso() {
       </Card.Body>
     </Card>
     </div>
+    </div>
   );
 }
 
-function aggiungi(object, value) {
+function aggiungi(object, value, day) {
   object.peso += value;
   object.peso = parseFloat(object.peso.toFixed(3));
-  call(object);
+  call(object, day);
 }
 
-function sottrai(object, value) {
+function sottrai(object, value, day) {
   object.peso -= value;
   object.peso = parseFloat(object.peso.toFixed(3));
-  call(object);
+  call(object, day);
 }
 
-function call(param) {
+function call(param, day) {
   let requestOptions = {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(param),
   };
 
-  fetch(process.env.REACT_APP_SERVICE_HOST+"write", requestOptions).then((response) =>
+  fetch(process.env.REACT_APP_SERVICE_HOST+"write"+day, requestOptions).then((response) =>
     console.log(response.status)
   );
 }
 
-export default Peso;
+export default withRouter(Peso);

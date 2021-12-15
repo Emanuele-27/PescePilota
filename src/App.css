@@ -34,6 +34,10 @@
     border-width: 2px !important;
     border-color: black;
   }
+
+  .dayR{
+    font-size: 10rem !important;
+  }
 }
 
 @page {

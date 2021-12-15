@@ -8,10 +8,13 @@ import { Button } from "primereact/button";
 import { CascadeSelect } from "primereact/cascadeselect";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import {withRouter} from 'react-router-dom';
 import { InputNumber } from "primereact/inputnumber";
+import Header from 'components/header/header';
 
 function Pezzatura() {
   let obj = useLocation().query;
+  let day = useLocation().day.day;
 
   const [stato, setStato] = useState(0);
 
@@ -208,13 +211,15 @@ function Pezzatura() {
       <Button
         type="button"
         icon="pi pi-trash"
-        onClick={() => deleteSingle(rowData)}
+        onClick={() => deleteSingle(rowData, day)}
         className="p-button-danger"
       ></Button>
     );
   };
 
   return (
+    <div>
+     <Header environment="calc" day={day}/>
     <div className="center">
       <Card className="cardPeso">
         <Card.Body>
@@ -265,7 +270,7 @@ function Pezzatura() {
             <Button
               label="Aggiungi"
               onClick={() => {
-                aggiungi(obj, n, p);
+                aggiungi(obj, n, p, day);
                 setN(0);
                 setP(0);
               }}
@@ -276,9 +281,10 @@ function Pezzatura() {
         </Card.Body>
       </Card>
     </div>
+    </div>
   );
 
-  function deleteSingle(row) {
+  function deleteSingle(row, day) {
     for (let i in obj.pezzature) {
       if (row.peso === obj.pezzature[i].peso && row.n === obj.pezzature[i].n) {
         obj.pezzature.splice(i, 1);
@@ -287,7 +293,7 @@ function Pezzatura() {
 
     setPesoNumber(obj.pezzature);
 
-    call(obj);
+    call(obj, day);
 
     setStato(stato + 1);
   }
@@ -307,7 +313,7 @@ function setPesoNumber(list) {
   }
 }
 
-function aggiungi(object, num, p) {
+function aggiungi(object, num, p, day) {
   setPesoNumber(object.pezzature);
   let flag = Boolean(false);
   for (let i in object.pezzature) {
@@ -325,18 +331,18 @@ function aggiungi(object, num, p) {
     object.pezzature.push(pezzatura);
   }
 
-  call(object);
+  call(object, day);
 }
 
-function call(param) {
+function call(param, day) {
   let requestOptions = {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(param),
   };
 
-  fetch(process.env.REACT_APP_SERVICE_HOST+"write", requestOptions).then((response) =>
+  fetch(process.env.REACT_APP_SERVICE_HOST+"write"+day, requestOptions).then((response) =>
     console.log(response.status)
   );
 }
-export default Pezzatura;
+export default withRouter(Pezzatura);
