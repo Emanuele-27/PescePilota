@@ -36,6 +36,7 @@
   }
 
   .dayR{
+    display: block !important;
     font-size: 10rem !important;
   }
 }
