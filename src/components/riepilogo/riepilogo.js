@@ -26,14 +26,18 @@ class Riepilogo extends Component {
         let pezzaturaList = [];
         for (let i in obj.pesci) {
           obj.pesci[i].nome = obj.pesci[i].nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
-          if (obj.pesci[i].peso > 0)
-            obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3).replace('.', ',') + " kg";
-          else obj.pesci[i].peso = obj.pesci[i].peso + " kg";
 
-          if (obj.pesci[i].isPezzi) {
+          if((obj.pesci[i].isPeso && obj.pesci[i].peso > 0) && 
+                ((obj.pesci[i].isPezzi && obj.pesci[i].pezzi === 0) || !obj.pesci[i].isPezzi)
+                ){
+              obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3).replace('.', ',') + " kg";
+              pesoList.push(obj.pesci[i]);
+          }
+
+          if (obj.pesci[i].isPezzi && obj.pesci[i].pezzi > 0) {
+            if(obj.pesci[i].peso > 0)
+              obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3).replace('.', ',') + " kg";
             pesoPezziList.push(obj.pesci[i]);
-          } else {
-            pesoList.push(obj.pesci[i]);
           }
 
           if (obj.pesci[i].isPezzatura && obj.pesci[i].pezzature.length !== 0) {

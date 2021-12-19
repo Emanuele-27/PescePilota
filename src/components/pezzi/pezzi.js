@@ -38,7 +38,7 @@ function Pezzi() {
           incrementButtonIcon="pi pi-plus"
           decrementButtonIcon="pi pi-minus"
           mode="decimal"
-          min={0} max={20}
+          min={0} max={100}
           className="numberClass"
           placeholder={0}
           inputClassName="inputClass"

@@ -59,10 +59,10 @@ function Pezzatura() {
       ],
     },
     {
-      name: "1,000 - 2,000",
+      name: "1,050 - 2,000",
       groupValues: [
         {
-          name: "1,000 - 1,500",
+          name: "1,050 - 1,500",
           values: [
             { label: "1,050", code: 1.05 },
             { label: "1,100", code: 1.1 },
