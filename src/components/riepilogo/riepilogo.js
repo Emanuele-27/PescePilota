@@ -1,125 +1,80 @@
-import React, { Component } from "react";
 import "./riepilogo.css";
 import { DataTable } from "primereact/datatable";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Column } from "primereact/column";
 import Header from 'components/header/header';
+import React, { Component } from "react";
 
 class Riepilogo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pesciPeso: [],
-      pesciPesoPezzi: [],
-      pesciPezzatura: [],
+      pesci: [],
+      expandedRows: null
     };
+    this.rowExpansionTemplate = this.rowExpansionTemplate.bind(this);
   }
 
   componentDidMount() {
-    fetch(process.env.REACT_APP_SERVICE_HOST+"read"+this.props.match.params.day)
+    fetch(process.env.REACT_APP_SERVICE_HOST + "read" + this.props.match.params.day)
       .then((response) => response.json())
       .then((json) => JSON.stringify(json))
       .then((jsonObj) => {
         let obj = JSON.parse(jsonObj);
-        let pesoList = [];
-        let pesoPezziList = [];
-        let pezzaturaList = [];
+        let pesciList = [];
+
         for (let i in obj.pesci) {
-          obj.pesci[i].nome = obj.pesci[i].nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
-
-          if((obj.pesci[i].isPeso && obj.pesci[i].peso > 0) && 
-                ((obj.pesci[i].isPezzi && obj.pesci[i].pezzi === 0) || !obj.pesci[i].isPezzi)
-                ){
+          if ((obj.pesci[i].isPeso && obj.pesci[i].peso > 0) ||
+            (obj.pesci[i].isPezzi && obj.pesci[i].pezzi > 0) ||
+            (obj.pesci[i].isPezzatura && obj.pesci[i].pezzature.length !== 0)) {
+            obj.pesci[i].nome = obj.pesci[i].nome.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
+            if (obj.pesci[i].peso > 0)
               obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3).replace('.', ',') + " kg";
-              pesoList.push(obj.pesci[i]);
-          }
-
-          if (obj.pesci[i].isPezzi && obj.pesci[i].pezzi > 0) {
-            if(obj.pesci[i].peso > 0)
-              obj.pesci[i].peso = obj.pesci[i].peso.toFixed(3).replace('.', ',') + " kg";
-            pesoPezziList.push(obj.pesci[i]);
-          }
-
-          if (obj.pesci[i].isPezzatura && obj.pesci[i].pezzature.length !== 0) {
-            for (let j in obj.pesci[i].pezzature) {
-              let object = {
-                nome: obj.pesci[i].nome,
-                n: obj.pesci[i].pezzature[j].n,
-                peso: obj.pesci[i].pezzature[j].peso.toFixed(3).replace('.', ',') + " kg",
-              };
-              pezzaturaList.push(object);
-            }
+            pesciList.push(obj.pesci[i]);
           }
         }
 
         this.setState({
-          pesciPeso: pesoList,
-          pesciPesoPezzi: pesoPezziList,
-          pesciPezzatura: pezzaturaList,
+          pesci: pesciList,
         });
       });
   }
 
   render() {
-    const headerPeso = <div className="table-header">Quantità</div>;
-
-    const headerPesoPezzi = (
-      <div className="table-header">Quantità e Pezzi</div>
-    );
-
-    const headerPezzature = <div className="table-header">Pezzature</div>;
-
     return (
 
       <div>
-     <Header environment="riepilogo" day={this.props.match.params.day}/>
-     <div id="printSelector">
-     <div className="dayR">{this.props.match.params.day}</div>
-        <div id="toPrint" className="centerRiep">
-          <DataTable
-            sortMode="single"
-            sortField="peso"
-            sortOrder={-1}
-            value={this.state.pesciPeso}
-            className="singleRiepStyle"
-            header={headerPeso}
-            emptyMessage="Nessun elemento presente"
-          >
-            <Column field="nome" header="Nome"></Column>
-            <Column field="peso" header="Quantità"></Column>
-          </DataTable>
-
-          <DataTable
-            sortMode="single"
-            sortField="peso"
-            sortOrder={-1}
-            value={this.state.pesciPesoPezzi}
-            className="doubleRiepStyle centerTable"
-            header={headerPesoPezzi}
-            emptyMessage="Nessun elemento presente"
-          >
-            <Column field="nome" header="Nome"></Column>
-            <Column field="peso" header="Quantità"></Column>
-            <Column field="pezzi" header="N. Pezzi"></Column>
-          </DataTable>
-
-          <DataTable
-            value={this.state.pesciPezzatura}
-            rowGroupMode="rowspan"
-            groupField="nome"
-            sortMode="single"
-            sortField="nome"
-            sortOrder={1}
-            className="doubleRiepStyle"
-            header={headerPezzature}
-            emptyMessage="Nessun elemento presente"
-          >
-            <Column field="nome" header="Nome"></Column>
-            <Column field="n" header="N. Pezzi"></Column>
-            <Column field="peso" header="Peso"></Column>
-          </DataTable>
+        <Header environment="riepilogo" day={this.props.match.params.day} />
+        <div id="printSelector">
+          <div className="dayR">{this.props.match.params.day}</div>
+          <div id="toPrint" className="centerRiep">
+            <DataTable value={this.state.pesci} expandedRows={this.state.expandedRows} className="doubleRiepStyle"
+              onRowToggle={(e) => {
+                this.setState({
+                  expandedRows: e.data
+                });
+              }}
+              rowExpansionTemplate={this.rowExpansionTemplate} emptyMessage="Nessun elemento presente"
+            >
+              <Column className="makeInvAfter" expander style={{ width: '3em' }} />
+              <Column field="nome" header="Nome" />
+              <Column field="pezzi" header="N. Pezzi" />
+              <Column field="peso" header="Peso" />
+            </DataTable>
+          </div>
         </div>
       </div>
+    );
+  }
+
+  rowExpansionTemplate(data) {
+    return (
+      <div>
+        <DataTable value={data.pezzature} className="doubleRiepStyle"
+        emptyMessage="Nessun elemento presente">
+          <Column field="n" header="N."></Column>
+          <Column field="peso" header="Peso"></Column>
+        </DataTable>
       </div>
     );
   }
