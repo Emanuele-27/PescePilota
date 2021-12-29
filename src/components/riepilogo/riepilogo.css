@@ -2,6 +2,10 @@
   width: 75%;
 }
 
+.p-datatable-thead{
+  display: none !important;
+}
+
 .centerRiep {
   display: flex; 
   justify-content: center;
@@ -13,7 +17,7 @@
 }
 
 .doubleRiepStyle{
-  width: 80%;
+  width:40%;
 }
 
 .p-datatable .p-datatable-thead > tr > th {

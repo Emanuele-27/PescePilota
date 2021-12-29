@@ -20,12 +20,12 @@
   .singleRiepStyle {
     width: 100% !important;
     margin-bottom: 0.5cm;
-    page-break-after: always;
+    /* page-break-after: always; */
   }
   .doubleRiepStyle {
-    width: 98% !important;
+    width: 100% !important;
     margin-bottom: 0.5cm;
-    page-break-after: always;
+    /* page-break-after: always; */
   }
   .centerRiep {
     display: block !important;
@@ -38,6 +38,7 @@
   .dayR{
     display: block !important;
     font-size: 10rem !important;
+    color: black;
   }
 
   /* .makeInvAfter{
