@@ -17,6 +17,7 @@
     "browserify-fs": "^1.0.0",
     "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
+    "express": "^4.18.1",
     "nodemon": "^2.0.13",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
@@ -30,7 +31,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"cd ../pescePilotaService && nodemon server/index.js\"",
+    "start": "react-scripts start", 
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
