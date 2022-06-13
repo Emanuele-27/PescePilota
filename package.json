@@ -16,7 +16,6 @@
     "bootstrap": "^5.1.1",
     "browserify-fs": "^1.0.0",
     "concurrently": "^6.3.0",
-    "cross-env": "^7.0.3",
     "express": "^4.18.1",
     "nodemon": "^2.0.13",
     "primeflex": "^2.0.0",
@@ -35,7 +34,7 @@
     "npm": "8.5.5"
   },
   "scripts": {
-    "start": "react-scripts start", 
+    "start": "react-scripts start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -57,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
